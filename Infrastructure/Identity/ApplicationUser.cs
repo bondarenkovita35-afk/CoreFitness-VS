@@ -9,6 +9,6 @@ public class ApplicationUser : IdentityUser
     // Förnamn (extra fält som vi själva lägger till)
     public string FirstName { get; set; } = string.Empty;
 
-    // Efternamn (extra fält)
+    // Efternamn 
     public string LastName { get; set; } = string.Empty;
 }
