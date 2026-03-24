@@ -3,34 +3,25 @@ using Infrastructure.Data;
 using Infrastructure.Identity;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Presentation.WebApp.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Här väljer vi databas beroende på miljö.
-if (builder.Environment.IsDevelopment())
-{
-    builder.Services.AddDbContext<AppDbContext>(options =>
+builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseInMemoryDatabase("CoreFitnessDevDb"));
 }
 else
 {
     builder.Services.AddDbContext<AppDbContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 }
 
-// Här lägger vi till Identity för inloggning.
-builder.Services
-    .AddDefaultIdentity<ApplicationUser>()
-    .AddRoles<IdentityRole>()
-    .AddEntityFrameworkStores<AppDbContext>();
 
-// Lägg till MVC och Razor Pages.
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
 
 var app = builder.Build();
 
-// Här sätter vi middleware.
 app.UseHttpsRedirection();
 app.UseRouting();
 
@@ -38,10 +29,8 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Routing till controllers.
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
 
 // Identity sidor.
 app.MapRazorPages();
