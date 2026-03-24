@@ -11,22 +11,38 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Presentation.WebApp</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm border-bottom">
+            <div class="container">
+
+                @* Logotyp *@
+                <a class="navbar-brand fw-bold fs-4" asp-controller="Home" asp-action="Index">
+                    CoreFitness
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+
+                <div class="collapse navbar-collapse" id="menu">
+
+                    @* Vänster meny *@
+                    <ul class="navbar-nav me-auto gap-3">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark fw-semibold" asp-controller="Home" asp-action="Index">Hem</a>
                         </li>
+
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark fw-semibold" href="/Classes">Pass</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link text-dark fw-semibold" href="/Memberships">Medlemskap</a>
                         </li>
                     </ul>
+
+                    @* Höger meny *@
+                    <partial name="_LoginPartial" />
+
                 </div>
             </div>
         </nav>
