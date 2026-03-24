@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Kopplar appen till databasen
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+}
 
 // Lägger till Identity med standardsidor.
 builder.Services
