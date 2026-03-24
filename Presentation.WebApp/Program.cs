@@ -1,3 +1,5 @@
+using Application.Common.Interfaces;
+using Application.Services;
 using Infrastructure.Data; // vår databas
 using Infrastructure.Identity; // vår användare
 using Microsoft.AspNetCore.Identity; // Identity
@@ -5,10 +7,12 @@ using Microsoft.EntityFrameworkCore; // EF Core
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Kopplar appen till databasen
+// Här använder vi InMemory-databas under utveckling.
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-}
+    options.UseInMemoryDatabase("CoreFitnessDevDb"));
+
+builder.Services.AddScoped<IAppDbContext>(provider => provider.GetRequiredService<AppDbContext>());
+builder.Services.AddScoped<MembershipService>();
 
 // Lägger till Identity med standardsidor.
 builder.Services
@@ -41,7 +45,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-// Viktigt: måste vara med för login
+// Viktigt: måste vara med för login.
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -52,5 +56,12 @@ app.MapControllerRoute(
 
 // Identity sidor
 app.MapRazorPages();
+
+// Skapar testdata när appen startar.
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    await DbSeeder.SeedAsync(context);
+}
 
 app.Run();

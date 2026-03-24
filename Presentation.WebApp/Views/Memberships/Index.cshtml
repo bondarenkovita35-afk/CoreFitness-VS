@@ -1,0 +1,52 @@
+﻿@model Domain.Entities.Membership?
+
+@{
+    ViewData["Title"] = "Medlemskap";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4">Medlemskap</h1>
+
+    @if (TempData["MembershipSuccess"] is not null)
+    {
+        <div class="alert alert-success">
+            @TempData["MembershipSuccess"]
+        </div>
+    }
+
+    @if (TempData["MembershipError"] is not null)
+    {
+        <div class="alert alert-danger">
+            @TempData["MembershipError"]
+        </div>
+    }
+
+    @if (Model is null)
+    {
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="card-title">Du har inget aktivt medlemskap</h5>
+                <p class="card-text">Skapa ett medlemskap för att kunna boka pass.</p>
+
+                <form asp-controller="Memberships" asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+                    <button type="submit" class="btn btn-dark">Skapa medlemskap</button>
+                </form>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="card shadow-sm border-0">
+            <div class="card-body">
+                <h5 class="card-title">Ditt medlemskap är aktivt</h5>
+                <p class="mb-2"><strong>Startdatum:</strong> @Model.StartDate.ToString("yyyy-MM-dd")</p>
+                <p class="mb-2"><strong>Slutdatum:</strong> @Model.EndDate.ToString("yyyy-MM-dd")</p>
+                <p class="mb-0">
+                    <strong>Status:</strong>
+                    @(Model.IsActive ? "Aktivt" : "Inaktivt")
+                </p>
+            </div>
+        </div>
+    }
+</div>
