@@ -22,7 +22,7 @@ public class MembershipService
             .FirstOrDefaultAsync(x => x.UserId == userId && x.IsActive, cancellationToken);
     }
 
-    // Skapar ett nytt medlemskap om användaren inte redan har ett aktivt.
+    // Skapar ett nytt medlemskap om det inte redan finns ett aktivt.
     public async Task<Result<Membership>> CreateMembershipAsync(string userId, CancellationToken cancellationToken = default)
     {
         var existingMembership = await _context.Memberships

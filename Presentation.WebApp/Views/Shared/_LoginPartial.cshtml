@@ -3,29 +3,31 @@
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
-<ul class="navbar-nav ms-auto align-items-center gap-3">
+<ul class="navbar-nav d-flex flex-row gap-3">
 
     @if (SignInManager.IsSignedIn(User))
     {
-        <li class="nav-item">
-            <a class="nav-link text-dark fw-semibold" href="/MyPage">Min sida</a>
+        <li>
+            <a class="nav-link" href="/Memberships">My Account</a>
         </li>
-
-        <li class="nav-item">
-            <form action="/Identity/Account/Logout" method="post">
-                <button class="btn btn-dark px-3 rounded-pill">Logga ut</button>
+        <li>
+            <form asp-area="Identity"
+                  asp-page="/Account/Logout"
+                  asp-route-returnUrl="@Url.Action("Index", "Home")"
+                  method="post"
+                  class="m-0">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="cf-signin-btn">Logout</button>
             </form>
         </li>
     }
     else
     {
-        <li class="nav-item">
-            <a class="nav-link text-dark fw-semibold" href="/Identity/Account/Register">Registrera</a>
+        <li>
+            <a class="nav-link" href="/Identity/Account/Register">Become Member</a>
         </li>
-
-        <li class="nav-item">
-            <a class="btn btn-dark px-3 rounded-pill" href="/Identity/Account/Login">Logga in</a>
+        <li>
+            <a class="cf-signin-btn" href="/Identity/Account/Login">Sign In</a>
         </li>
     }
-
 </ul>

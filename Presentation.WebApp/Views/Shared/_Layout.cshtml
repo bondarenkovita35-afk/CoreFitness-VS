@@ -1,66 +1,68 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="sv">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Presentation.WebApp</title>
-    <script type="importmap"></script>
+    <title>@ViewData["Title"] - CoreFitness</title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/Presentation.WebApp.styles.css" asp-append-version="true" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm border-bottom">
-            <div class="container">
 
-                @* Logotyp *@
-                <a class="navbar-brand fw-bold fs-4" asp-controller="Home" asp-action="Index">
-                    CoreFitness
-                </a>
+<body class="cf-body">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg cf-navbar">
+        <div class="container-fluid">
 
-                <div class="collapse navbar-collapse" id="menu">
+            <!-- LOGO -->
+            <a class="navbar-brand cf-logo" asp-controller="Home" asp-action="Index">
+                ● CoreFitness
+            </a>
 
-                    @* Vänster meny *@
-                    <ul class="navbar-nav me-auto gap-3">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark fw-semibold" asp-controller="Home" asp-action="Index">Hem</a>
-                        </li>
+            <!-- MOBILE BUTTON -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark fw-semibold" href="/Classes">Pass</a>
-                        </li>
+            <div class="collapse navbar-collapse" id="menu">
 
-                        <li class="nav-item">
-                            <a class="nav-link text-dark fw-semibold" href="/Memberships">Medlemskap</a>
-                        </li>
-                    </ul>
+                <!-- LEFT MENU -->
+                <ul class="navbar-nav mx-auto cf-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Fitness Centers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Memberships">Memberships</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/Classes">Training</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Customer Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Store</a>
+                    </li>
+                </ul>
 
-                    @* Höger meny *@
-                    <partial name="_LoginPartial" />
+                <!-- RIGHT MENU -->
+                <partial name="_LoginPartial" />
 
-                </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2026 - Presentation.WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
+    </nav>
+
+    <!-- PAGE CONTENT -->
+    <main>
+        @RenderBody()
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="cf-footer text-center">
+        © 2026 CoreFitness
     </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

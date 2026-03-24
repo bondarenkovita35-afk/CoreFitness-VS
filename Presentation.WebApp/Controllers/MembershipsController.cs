@@ -13,13 +13,15 @@ public class MembershipsController : Controller
     private readonly MembershipService _membershipService;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public MembershipsController(MembershipService membershipService, UserManager<ApplicationUser> userManager)
+    public MembershipsController(
+        MembershipService membershipService,
+        UserManager<ApplicationUser> userManager)
     {
         _membershipService = membershipService;
         _userManager = userManager;
     }
 
-    // Visar användarens medlemskap.
+    // Visar medlemskap för inloggad användare.
     public async Task<IActionResult> Index(CancellationToken cancellationToken)
     {
         var user = await _userManager.GetUserAsync(User);

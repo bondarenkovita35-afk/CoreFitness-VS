@@ -1,8 +1,211 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+@* Hero-sektion för startsidan. *@
+<section class="cf-home-hero">
+    <div class="container cf-home-hero-inner">
+
+        <div class="cf-home-left">
+            <div class="cf-home-kicker">
+                ✦ Strong body. Strong mind.
+            </div>
+
+            <h1 class="cf-home-title">
+                Build Strength Boost
+                Confidence Today!
+            </h1>
+
+            <p class="cf-home-text">
+                Begin your fitness journey with expert trainers, modern equipment,
+                and a supportive environment designed to help you build strength
+                and confidence.
+            </p>
+
+            <div class="cf-home-points">
+                <div>✔ Transform your body with training</div>
+                <div>✔ Personal training for real results</div>
+                <div>✔ Build confidence through fitness</div>
+                <div>✔ Fitness tailored to your goals</div>
+            </div>
+
+            <a href="/Memberships" class="cf-home-btn">Get Started</a>
+        </div>
+
+        <div class="cf-home-right">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=1200&auto=format&fit=crop"
+                 alt="Fitness"
+                 class="cf-home-image" />
+        </div>
+
+    </div>
+</section>
+
+<section class="cf-home-strip">
+    <div class="container cf-home-strip-inner">
+        <span>Logoipsum</span>
+        <span>Logoipsum</span>
+        <span>Logoipsum</span>
+        <span>Logoipsum</span>
+        <strong>Modern Equipment</strong>
+    </div>
+    <section class="cf-home-info">
+        <div class="container">
+
+            <div class="row align-items-center g-5 mb-5">
+                <div class="col-lg-5">
+                    <div class="cf-stacked-images">
+                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=900&auto=format&fit=crop"
+                             alt="Training 1"
+                             class="cf-stack-img cf-stack-img-left" />
+
+                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=900&auto=format&fit=crop"
+                             alt="Training 2"
+                             class="cf-stack-img cf-stack-img-right" />
+                    </div>
+                </div>
+
+                <div class="col-lg-7">
+                    <div class="cf-section-badge">CoreFitness</div>
+
+                    <h2 class="cf-info-title">
+                        Elevating Fitness Journey
+                        with Expert Guidance
+                    </h2>
+
+                    <p class="cf-info-text">
+                        Discover a modern training environment with experienced trainers,
+                        motivating programs, and support that helps you move closer to your goals.
+                    </p>
+
+                    <p class="cf-info-text">
+                        Our mission is to help every member build strength, confidence,
+                        and a healthier lifestyle through structure and smart training.
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mb-4">
+                <div class="cf-section-badge mx-auto">Our Programs</div>
+                <h2 class="cf-program-title">
+                    Professional training program
+                    for stronger health
+                </h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="cf-program-card">
+                        <img src="https://images.unsplash.com/photo-1534367610401-9f5ed68180aa?q=80&w=900&auto=format&fit=crop"
+                             alt="Program 1"
+                             class="cf-program-image" />
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cf-program-card">
+                        <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=900&auto=format&fit=crop"
+                             alt="Program 2"
+                             class="cf-program-image" />
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="cf-program-card">
+                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=900&auto=format&fit=crop"
+                             alt="Program 3"
+                             class="cf-program-image" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</section>
+<section class="cf-home-products">
+    <div class="container">
+
+        <div class="text-center mb-4">
+            <div class="cf-section-badge mx-auto">Shop</div>
+            <h2 class="cf-program-title">
+                High quality fitness products
+            </h2>
+            <p class="cf-info-text mx-auto text-center">
+                Built for results and selected for active training.
+            </p>
+        </div>
+
+        <div class="row g-4 justify-content-center mb-5">
+            <div class="col-6 col-md-3">
+                <div class="cf-product-card text-center">
+                    <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=500&auto=format&fit=crop"
+                         alt="Dumbbells"
+                         class="cf-product-image" />
+                    <h6 class="mt-3 mb-0">Dumbbells</h6>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="cf-product-card text-center">
+                    <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?q=80&w=500&auto=format&fit=crop"
+                         alt="Bag"
+                         class="cf-product-image" />
+                    <h6 class="mt-3 mb-0">Training Bag</h6>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="cf-product-card text-center">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?q=80&w=500&auto=format&fit=crop"
+                         alt="Resistance band"
+                         class="cf-product-image" />
+                    <h6 class="mt-3 mb-0">Resistance Band</h6>
+                </div>
+            </div>
+
+            <div class="col-6 col-md-3">
+                <div class="cf-product-card text-center">
+                    <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?q=80&w=500&auto=format&fit=crop"
+                         alt="Exercise bike"
+                         class="cf-product-image" />
+                    <h6 class="mt-3 mb-0">Exercise Bike</h6>
+                </div>
+            </div>
+        </div>
+
+        <div class="cf-home-cta">
+            <div class="row align-items-center g-4">
+                <div class="col-lg-6">
+                    <div class="cf-brand-mini">CoreFitness</div>
+                    <h3 class="cf-cta-title">
+                        Empowering Your Fitness Journey with Expert
+                        Training and Lasting Results
+                    </h3>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="cf-cta-info">
+                        <h6>Our location</h6>
+                        <p>
+                            Our training and membership center with indoor gym
+                            and professional environment.
+                        </p>
+                        <p class="mb-0">
+                            2nd Floor, Modern Center, Drottninggatan 10, Stockholm
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-lg-3">
+                    <div class="cf-cta-info">
+                        <h6>Working Hours</h6>
+                        <p>Mon - Fri: 06:00 - 22:00</p>
+                        <p>Saturday: 08:00 - 18:00</p>
+                        <p class="mb-0">Sun: 09:00 - 18:00</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

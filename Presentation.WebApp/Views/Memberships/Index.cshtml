@@ -1,52 +1,166 @@
 ﻿@model Domain.Entities.Membership?
 
 @{
-    ViewData["Title"] = "Medlemskap";
+    ViewData["Title"] = "Memberships";
 }
 
-<div class="container mt-4">
-    <h1 class="mb-4">Medlemskap</h1>
+@* Sida för medlemskap enligt designmallen. *@
+<section class="cf-membership-page">
+    <div class="container py-5">
 
-    @if (TempData["MembershipSuccess"] is not null)
-    {
-        <div class="alert alert-success">
-            @TempData["MembershipSuccess"]
+        <div class="text-center mb-5">
+            <h1 class="cf-section-title">Our Membership Offers</h1>
         </div>
-    }
 
-    @if (TempData["MembershipError"] is not null)
-    {
-        <div class="alert alert-danger">
-            @TempData["MembershipError"]
-        </div>
-    }
+        @if (TempData["MembershipSuccess"] is not null)
+        {
+            <div class="alert alert-success mb-4">
+                @TempData["MembershipSuccess"]
+            </div>
+        }
 
-    @if (Model is null)
-    {
-        <div class="card shadow-sm border-0">
-            <div class="card-body">
-                <h5 class="card-title">Du har inget aktivt medlemskap</h5>
-                <p class="card-text">Skapa ett medlemskap för att kunna boka pass.</p>
+        @if (TempData["MembershipError"] is not null)
+        {
+            <div class="alert alert-danger mb-4">
+                @TempData["MembershipError"]
+            </div>
+        }
 
-                <form asp-controller="Memberships" asp-action="Create" method="post">
-                    @Html.AntiForgeryToken()
-                    <button type="submit" class="btn btn-dark">Skapa medlemskap</button>
-                </form>
+        <div class="row g-4 align-items-stretch mb-5">
+
+            <!-- CARD 1 -->
+            <div class="col-lg-4">
+                <div class="cf-price-card h-100">
+                    <div class="cf-price-icon">●</div>
+                    <h3 class="cf-price-title">Standard Membership</h3>
+                    <p class="cf-price-text">
+                        Ett enkelt medlemskap för dig som vill börja träna och få tillgång till gymmet.
+                    </p>
+
+                    <ul class="cf-feature-list">
+                        <li>Full tillgång till gym</li>
+                        <li>Grundläggande träningsmiljö</li>
+                        <li>Passar nya medlemmar</li>
+                    </ul>
+
+                    <div class="cf-price-bottom">
+                        @if (Model is null)
+                        {
+                            <div class="cf-price-box">
+                                <div class="cf-price-value">495.00</div>
+                                <div class="cf-price-small">Monthly</div>
+                            </div>
+
+                            <form asp-controller="Memberships" asp-action="Create" method="post">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="cf-price-btn">Join Now</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <div class="cf-price-box">
+                                <div class="cf-price-value">Aktivt</div>
+                                <div class="cf-price-small">Du har medlemskap</div>
+                            </div>
+
+                            <button type="button" class="cf-price-btn cf-price-btn-disabled" disabled>
+                                Already Active
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="col-lg-4">
+                <div class="cf-price-card h-100">
+                    <div class="cf-price-icon">●</div>
+                    <h3 class="cf-price-title">Premium Membership</h3>
+                    <p class="cf-price-text">
+                        För dig som vill ha en mer komplett upplevelse med extra stöd och fler möjligheter.
+                    </p>
+
+                    <ul class="cf-feature-list">
+                        <li>Prioriterad bokning av pass</li>
+                        <li>Fler träningsmöjligheter</li>
+                        <li>Passar dig som tränar regelbundet</li>
+                    </ul>
+
+                    <div class="cf-price-bottom">
+                        <div class="cf-price-box">
+                            <div class="cf-price-value">595.00</div>
+                            <div class="cf-price-small">Monthly</div>
+                        </div>
+
+                        <button type="button" class="cf-price-btn">
+                            Join Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROMO CARD -->
+            <div class="col-lg-4">
+                <div class="cf-promo-card h-100">
+                    <div class="cf-promo-content">
+                        <h3 class="cf-promo-title">
+                            Get Your Membership
+                        </h3>
+                        <p class="cf-promo-text">
+                            Start your fitness journey with support, motivation and access to modern training.
+                        </p>
+
+                        <a href="/Classes" class="cf-promo-btn">Explore Training</a>
+                    </div>
+
+                    <div class="cf-promo-image-box">
+                        <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?q=80&w=900&auto=format&fit=crop"
+                             alt="Training"
+                             class="cf-promo-image" />
+                    </div>
+                </div>
             </div>
         </div>
-    }
-    else
-    {
-        <div class="card shadow-sm border-0">
-            <div class="card-body">
-                <h5 class="card-title">Ditt medlemskap är aktivt</h5>
-                <p class="mb-2"><strong>Startdatum:</strong> @Model.StartDate.ToString("yyyy-MM-dd")</p>
-                <p class="mb-2"><strong>Slutdatum:</strong> @Model.EndDate.ToString("yyyy-MM-dd")</p>
-                <p class="mb-0">
-                    <strong>Status:</strong>
-                    @(Model.IsActive ? "Aktivt" : "Inaktivt")
-                </p>
+
+        <!-- FAQ BLOCK -->
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-5">
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1000&auto=format&fit=crop"
+                     alt="Gym"
+                     class="cf-faq-image" />
+            </div>
+
+            <div class="col-lg-7">
+                <div class="cf-faq-box">
+                    <div class="cf-faq-badge">Frequently Asked Questions</div>
+
+                    <h2 class="cf-faq-title">
+                        Common questions about gym and training
+                    </h2>
+
+                    <div class="cf-faq-item">
+                        <h5>Do I need prior gym experience to join CoreFitness?</h5>
+                        <p>
+                            Nej. Våra medlemskap passar både nybörjare och personer med tidigare erfarenhet.
+                        </p>
+                    </div>
+
+                    <div class="cf-faq-item">
+                        <h5>What facilities are included with the membership?</h5>
+                        <p>
+                            Du får tillgång till gymmet och kan använda medlemskapet för att boka pass.
+                        </p>
+                    </div>
+
+                    <div class="cf-faq-item">
+                        <h5>Can I try the gym before taking a membership?</h5>
+                        <p>
+                            Det kan du senare utveckla som extra funktion, men just nu fokuserar systemet på medlemskap och bokning.
+                        </p>
+                    </div>
+                </div>
             </div>
         </div>
-    }
-</div>
+
+    </div>
+</section>
